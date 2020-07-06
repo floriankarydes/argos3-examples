@@ -34,4 +34,4 @@ I would've liked to add the behavior of moving towards a gap between two objects
 
 ### Comment
 
-The solution provide a nice upgrade of the example with minimal changes in the algorithm philosophy. The code is clean, well documented.
+The solution provides a nice upgrade of the example without diverging from the initial algorithm paradigm. The code is clean, well documented.
