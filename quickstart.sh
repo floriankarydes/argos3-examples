@@ -49,6 +49,7 @@ ln -fs "${H_IN}" "${H_OU}"
 # Build
 mkdir -p "${REPO}/build"
 cd "${REPO}/build"
+rm -Rf *
 cmake -DCMAKE_BUILD_TYPE=Release .. 
 make
 

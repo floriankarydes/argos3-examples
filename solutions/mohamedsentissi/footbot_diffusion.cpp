@@ -13,8 +13,8 @@
 CFootBotDiffusion::CFootBotDiffusion() :
    m_pcWheels(NULL),
    m_pcProximity(NULL),
-   vmax(0.0f),
-   km(0.0f),
+   vmax(0.0f), // [REV] ArgOS uses prefix (e.g. m_f...), you should always try to stick to the defined formalism.
+   km(0.0f), // [REV] Good class attribute redefinition
    kt(0.0f),
    right_speed(0.0f),
    left_speed(0.0f) {}
@@ -54,7 +54,8 @@ void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
     * parameters and it's nice to put them in the config file so we don't
     * have to recompile if we want to try other settings.
     */
-   GetNodeAttribute(t_node, "km", km);
+   // [REV] Defining your parameters in scenario is a good practice
+   GetNodeAttribute(t_node, "km", km); // [REV] Why not calling this function with the default value like in the example.
    GetNodeAttribute(t_node, "kt", kt);
    GetNodeAttribute(t_node, "vmax", vmax);
    left_speed = vmax;
@@ -74,7 +75,7 @@ void CFootBotDiffusion::ControlStep() {
    }
    cAccumulator /= tProxReads.size();
    /* Compute repulsive force */
-   cAccumulator *= -1;
+   cAccumulator *= -1; // [REV] Non necessary line.
    /* If no repulsive force, go at max speed in displacement direction (because no specific goals) */
    Real vM = (right_speed+left_speed)/2; /* vM is the translational component of robot velocity */
    if(cAccumulator.Length()==0){
